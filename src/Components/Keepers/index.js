@@ -6,7 +6,7 @@ import { Typography, Grid, GridList } from '@material-ui/core'
 export default function KeepersList() {
 
   return (
-    <GridList spacing={1} container direction='column' className='gridList'>
+    <GridList spacing={1} cols={1} container direction='row' className='gridList'>
 
       <Grid item sm={12}>
         <ServicesCard />

@@ -1,20 +1,20 @@
 import React from 'react'
 import StarBorderIcon from '@material-ui/icons/StarBorder'
-import { List, Typography, Avatar, Grid, ListItemText, ListItem } from '@material-ui/core/'
+import { List, Typography, Avatar, Grid, ListItemText, ListItem, GridList } from '@material-ui/core/'
 import { Rating } from '@material-ui/lab'
 
 export default function KeeperCard() {
   const dense = false
 
   return (
-    <Grid container justify='center' alignItems='center'>
-      <Grid item>
+    <Grid container>
+      <Grid item sm={3}>
         <Avatar
           alt='Arlete Ribeiro'
           src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTK1J-i3ZrWnicHdauDJ1ZUN9laTSlb1xG0bhlf9a484BGIL2JL'
         />
       </Grid>
-      <Grid item>
+      <Grid item sm={9}>
         <Typography variant='h5' component='h2'>
           Arlete Ribeiro
         </Typography>
