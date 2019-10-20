@@ -12,7 +12,6 @@ export default function BottomNavBar () {
         setValue(newValue)
       }}
       showLabels
-      position='static'
     >
       <BottomNavigationAction label='Home' icon={<Home />} />
       <BottomNavigationAction label='Pedidos' icon={<History />} />

@@ -2,6 +2,7 @@ import React from 'react'
 import { Header, Footer } from './Components/Layouts/'
 import KeepersList from './Components/Keepers'
 import { makeStyles } from '@material-ui/styles'
+import { Paper } from '@material-ui/core'
 
 const useStyles = makeStyles({
   App: {
@@ -13,12 +14,16 @@ const useStyles = makeStyles({
   },
   content: {
     width: '100%',
-    height: '100%'
+    height: 'calc(100% - 120px)',
+    overflow: 'auto'
   },
 
   menu: {
+    bottom: '0',
+    height: '56',
     width: '100%'
   }
+
 })
 
 function App (props) {
@@ -27,9 +32,9 @@ function App (props) {
   return (
     <div className={classes.App}>
       <Header />
-      <div className={classes.content}>
+      <Paper className={classes.content}>
         <KeepersList />
-      </div>
+      </Paper>
       <div className={classes.menu}>
         <Footer />
       </div>
