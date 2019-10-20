@@ -3,8 +3,7 @@ import KeeperCard from './KeeperCard'
 import ServicesCard from './ServicesCard'
 import { Typography, Grid, GridList } from '@material-ui/core'
 
-export default function KeepersList() {
-
+export default function KeepersList () {
   return (
     <GridList spacing={1} cols={1} container direction='row' className='gridList'>
 

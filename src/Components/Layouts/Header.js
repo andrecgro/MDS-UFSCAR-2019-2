@@ -3,7 +3,7 @@ import React from 'react'
 import { AppBar, Toolbar, Typography, List, ListItem, ListItemIcon, ListItemText, Collapse } from '@material-ui/core'
 import { MyLocation, ExpandLess, ExpandMore } from '@material-ui/icons'
 
-export default function TopBar() {
+export default function TopBar () {
   const [open, setOpen] = React.useState(true)
   const handleClick = () => {
     setOpen(!open)

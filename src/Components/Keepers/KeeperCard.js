@@ -1,9 +1,9 @@
 import React from 'react'
 import StarBorderIcon from '@material-ui/icons/StarBorder'
-import { List, Typography, Avatar, Grid, ListItemText, ListItem, GridList } from '@material-ui/core/'
+import { List, Typography, Avatar, Grid, ListItemText, ListItem } from '@material-ui/core/'
 import { Rating } from '@material-ui/lab'
 
-export default function KeeperCard() {
+export default function KeeperCard () {
   const dense = false
 
   return (

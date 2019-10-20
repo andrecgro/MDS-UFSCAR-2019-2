@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Avatar, Paper, Grid } from '@material-ui/core/'
 
-export default function ServicesCard() {
+export default function ServicesCard () {
   return (
     <Paper>
       <Typography variant='h5' component='h2' gutterBottom>
