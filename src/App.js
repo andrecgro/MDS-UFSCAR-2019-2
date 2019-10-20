@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   }
 })
 
-function App(props) {
+function App (props) {
   const classes = useStyles(props)
 
   return (
