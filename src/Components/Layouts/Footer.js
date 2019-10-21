@@ -2,7 +2,7 @@ import React from 'react'
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core'
 import { Home, History, Person } from '@material-ui/icons'
 
-export default function BottomNavBar() {
+export default function BottomNavBar () {
   const [value, setValue] = React.useState(0)
 
   return (
@@ -12,7 +12,6 @@ export default function BottomNavBar() {
         setValue(newValue)
       }}
       showLabels
-      position='static'
     >
       <BottomNavigationAction label='Home' icon={<Home />} />
       <BottomNavigationAction label='Pedidos' icon={<History />} />
