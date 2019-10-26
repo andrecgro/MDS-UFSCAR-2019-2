@@ -1,38 +1,29 @@
 import React, { useState } from 'react'
-import { Button, TextField, Box, Container, Snackbar } from '@material-ui/core'
+import { Button, TextField, Box, Container } from '@material-ui/core'
 
 import { makeStyles } from '@material-ui/core/styles'
+import { withSnackbar } from 'notistack'
+import FirebaseService from '../../Services/Firebase'
 
-export default function Register ({ history }) {
+function Register ({ history, enqueueSnackbar }) {
   const classes = useStyles()
 
-  const [nome, setNome] = useState(null)
-  const [email, setEmail] = useState(null)
-  const [senha, setSenha] = useState(null)
-  const [confirmacao, setConfirmacao] = useState(null)
-
-  const [message, setMessage] = React.useState('')
-  const [open, setOpen] = React.useState(false)
-  const [okay, setOkay] = React.useState(false)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmation, setConfirmation] = useState('')
 
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    if (senha !== confirmacao) {
-      setMessage('As senhas não combinam, tente digitar novamente')
-      setOpen(true)
+    if (password !== confirmation) {
+      enqueueSnackbar('As senhas não combinam, tente digitar novamente', { variant: 'warning' })
       return
     }
 
-    const user = { nome, email, senha }
-    console.log(user)
-    setOkay(true)
-    setOpen(true)
-    /* registerUser(user).then(response => {
-      if (response.status === 201) {
-        setMessage('Usuário criado!')
-      }
-    }) */
+    FirebaseService.createUserWithEmailAndPassword(email, password, { name: name })
+      .then(() => enqueueSnackbar('Usuário criado com sucesso', { variant: 'success' }))
+      .catch(err => enqueueSnackbar(err.message, { variant: 'error' }))
   }
 
   return (
@@ -51,7 +42,8 @@ export default function Register ({ history }) {
             required
             fullWidth
             label='Nome'
-            onChange={event => setNome(event.target.value)}
+            value={name}
+            onChange={event => setName(event.target.value)}
           />
           <TextField
             margin='normal'
@@ -59,6 +51,7 @@ export default function Register ({ history }) {
             fullWidth
             type='email'
             label='E-mail'
+            value={email}
             onChange={event => setEmail(event.target.value)}
           />
           <TextField
@@ -67,7 +60,8 @@ export default function Register ({ history }) {
             fullWidth
             label='Senha'
             type='password'
-            onChange={event => setSenha(event.target.value)}
+            value={password}
+            onChange={event => setPassword(event.target.value)}
           />
           <TextField
             margin='normal'
@@ -75,7 +69,8 @@ export default function Register ({ history }) {
             fullWidth
             label='Confirmar senha'
             type='password'
-            onChange={event => setConfirmacao(event.target.value)}
+            value={confirmation}
+            onChange={event => setConfirmation(event.target.value)}
           />
           <Button
             type='submit'
@@ -84,31 +79,18 @@ export default function Register ({ history }) {
             className={classes.submit}
             color='primary'
           >
-              Cadastrar
+            Cadastrar
           </Button>
         </form>
       </Container>
-      <Snackbar
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-        className={classes.snackbar}
-        open={open}
-        autoHideDuration={2000}
-        onClose={() => {
-          setOpen(false)
-          if (okay) { history.push('/') }
-        }}
-        ContentProps={{ 'aria-describedby': { message } }}
-        message={message}
-      />
     </Box>
   )
 }
 
+export default withSnackbar(Register)
+
 const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(4, 0, 2)
-  },
-  snackbar: {
-    bottom: theme.spacing(9)
   }
 }))
