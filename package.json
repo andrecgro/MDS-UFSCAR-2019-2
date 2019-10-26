@@ -29,7 +29,8 @@
   "standard": {
     "env": [
       "mocha"
-    ]
+    ],
+    "parser": "babel-eslint"
   },
   "browserslist": {
     "production": [
