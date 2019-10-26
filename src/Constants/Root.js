@@ -5,15 +5,16 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 
 import { theme } from './theme'
 import Routes from './routes'
-import Firebase, { FirebaseContext } from './Firebase'
+
+import { SnackbarProvider } from 'notistack'
 
 export default function Root () {
   return (
-    <FirebaseContext.Provider value={new Firebase()}>
+    <SnackbarProvider maxSnack={5} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes />
       </ThemeProvider>
-    </FirebaseContext.Provider>
+    </SnackbarProvider>
   )
 }
