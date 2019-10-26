@@ -1,26 +1,23 @@
 import React from 'react'
-import StarBorderIcon from '@material-ui/icons/StarBorder'
-import { List, Typography, Avatar, Grid, ListItemText, ListItem } from '@material-ui/core/'
-import { Rating } from '@material-ui/lab'
-import { makeStyles } from '@material-ui/core/styles';
+import { Typography, Avatar, Grid } from '@material-ui/core/'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   features: {
-    marginRight: '5px',
+    marginRight: '5px'
   },
   avatar: {
     width: 60,
     height: 60,
-    margin: 0,
+    margin: 0
   },
   listItem: {
-    padding:'0px!important'
+    padding: '0px!important'
   }
-}));
+}))
 
 export default function KeeperCard () {
-  const dense = false
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
 
@@ -37,7 +34,7 @@ export default function KeeperCard () {
           Arlete Ribeiro
         </Typography>
         <Grid container item direction='row'>
-          <Grid item  className={classes.features}>
+          <Grid item className={classes.features}>
             <Typography variant='caption' component='h2'>
               Lavagem de Roupas
             </Typography>

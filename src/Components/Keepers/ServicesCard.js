@@ -1,15 +1,15 @@
 import React from 'react'
 import { Container, Typography, Avatar, Grid } from '@material-ui/core/'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   container: {
-    padding: 0,
-  },
-}));
+    padding: 0
+  }
+}))
 
 export default function ServicesCard () {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Container className={classes.container}>

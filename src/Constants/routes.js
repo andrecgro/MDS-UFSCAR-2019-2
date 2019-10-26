@@ -6,8 +6,8 @@ import Register from '../Pages/Register'
 export default function Routes () {
   return (
     <BrowserRouter>
-	  <Route path='/' exact component={Register} />
-	  <Route path='/home' exact component={App} />
+      <Route path='/' exact component={Register} />
+      <Route path='/home' exact component={App} />
     </BrowserRouter>
   )
 }
