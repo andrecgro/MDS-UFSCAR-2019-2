@@ -5,6 +5,11 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   container: {
     padding: 0
+  },
+  avatar: {
+    width: 80,
+    height: 80,
+    margin: 0
   }
 }))
 
@@ -21,24 +26,28 @@ export default function ServicesCard () {
           <Avatar
             alt='Arlete Ribeiro'
             src='../Assets/Images/geral.png'
+            className={classes.avatar}
           />
         </Grid>
         <Grid item>
           <Avatar
             alt='Arlete Ribeiro'
             src='../../Assets/Images/janela.png'
+            className={classes.avatar}
           />
         </Grid>
         <Grid item>
           <Avatar
             alt='Arlete Ribeiro'
             src='../../Assets/Images/lavar.png'
+            className={classes.avatar}
           />
         </Grid>
         <Grid item>
           <Avatar
             alt='Arlete Ribeiro'
             src='../../Assets/Images/passar.png'
+            className={classes.avatar}
           />
         </Grid>
       </Grid>

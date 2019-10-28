@@ -30,4 +30,8 @@ export default class FirebaseService {
     return FirebaseAuth.createUserWithEmailAndPassword(email, password)
       .then(authUser => FirebaseDatabase.ref('users/' + authUser.user.uid).set(datas))
   }
+
+  static signInWithEmailAndPassword = (email, password) => {
+    return FirebaseAuth.signInWithEmailAndPassword(email, password)
+  }
 }

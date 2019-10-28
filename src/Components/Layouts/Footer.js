@@ -13,9 +13,9 @@ export default function BottomNavBar () {
       }}
       showLabels
     >
-      <BottomNavigationAction label='Home' icon={<Home />} />
-      <BottomNavigationAction label='Pedidos' icon={<History />} />
-      <BottomNavigationAction label='Minha Conta' icon={<Person />} />
+      <BottomNavigationAction label='Home' icon={<Home />} href='../index' />
+      <BottomNavigationAction label='Pedidos' icon={<History />} href='../schedules' />
+      <BottomNavigationAction label='Minha Conta' icon={<Person />} href='#' />
     </BottomNavigation>
   )
 }

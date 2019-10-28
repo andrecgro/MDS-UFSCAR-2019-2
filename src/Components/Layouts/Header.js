@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1
 
+  },
+  local: {
+    fontSize: '0.5rem'
   }
 }))
 
@@ -39,7 +42,7 @@ export default function TopBar () {
           <ListItemIcon>
             <MyLocation />
           </ListItemIcon>
-          <ListItemText primary='São Carlos - SP' />
+          <ListItemText className={classes.local} primary='São Carlos - SP' />
           {open ? <ExpandMore /> : <ExpandLess />}
         </Button>
       </Toolbar>
