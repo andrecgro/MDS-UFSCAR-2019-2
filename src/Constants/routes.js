@@ -4,7 +4,6 @@ import App from '../App'
 import Register from '../Pages/Register'
 import Main from '../Pages/Main'
 import Orders from '../Components/Orders'
-import Me from '../Pages/Me'
 import HistoryOrders from '../Components/Orders/HistoricoPedidos'
 import FutureOrders from '../Components/Orders/PedidosAgendados'
 
@@ -17,7 +16,6 @@ export default function Routes () {
       <Route path='/orders' exact component={Orders} />
       <Route path='/scheduled' exact component={FutureOrders} />
       <Route path='/history' exact component={HistoryOrders} />
-      <Route path='/me' exact component={Me} />
     </BrowserRouter>
   )
 }
