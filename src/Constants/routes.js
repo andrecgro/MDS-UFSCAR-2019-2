@@ -6,6 +6,7 @@ import Main from '../Pages/Main'
 import Orders from '../Components/Orders'
 import HistoryOrders from '../Components/Orders/HistoricoPedidos'
 import FutureOrders from '../Components/Orders/PedidosAgendados'
+import KeeperPage from '../Components/Keepers/KeeperPage'
 
 export default function Routes () {
   return (
@@ -16,6 +17,7 @@ export default function Routes () {
       <Route path='/orders' exact component={Orders} />
       <Route path='/scheduled' exact component={FutureOrders} />
       <Route path='/history' exact component={HistoryOrders} />
+      <Route path='/keeper' exact component={KeeperPage} />
     </BrowserRouter>
   )
 }
