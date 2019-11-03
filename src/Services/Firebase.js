@@ -34,4 +34,18 @@ export default class FirebaseService {
   static signInWithEmailAndPassword = (email, password) => {
     return FirebaseAuth.signInWithEmailAndPassword(email, password)
   }
+
+  static onAuthChange = (callbackLogin, callbackLogout) => {
+    FirebaseAuth.onAuthStateChanged(authUser => {
+      if (!authUser) {
+        callbackLogout(authUser)
+      } else {
+        callbackLogin(authUser)
+      }
+    })
+  }
+
+  static logout = () => {
+    return FirebaseAuth.signOut()
+  }
 }
