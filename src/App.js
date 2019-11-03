@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Header, Footer } from './Components/Layouts/'
 import KeepersList from './Components/Keepers'
+import Me from './Pages/Me'
 import { makeStyles } from '@material-ui/styles'
 import { Paper } from '@material-ui/core'
 
@@ -28,15 +29,17 @@ const useStyles = makeStyles({
 
 function App (props) {
   const classes = useStyles(props)
+  const [page, setPage] = useState('home')
 
   return (
     <div className={classes.App}>
       <Header />
       <Paper className={classes.content}>
-        <KeepersList />
+        {(page === 'home') && <KeepersList />}
+        {(page === 'me') && <Me />}
       </Paper>
       <div className={classes.menu}>
-        <Footer />
+        <Footer callBack={setPage} />
       </div>
     </div>
   )
