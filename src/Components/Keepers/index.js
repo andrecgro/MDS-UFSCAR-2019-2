@@ -23,19 +23,19 @@ export default function KeepersList () {
         Profissionais
       </Typography>
       <List>
-        <ListItem className={classes.listItem} button component='a' href='./KeeperPage'>
+        <ListItem className={classes.listItem} button component='a' href='/KeeperPage'>
           <KeeperCard />
         </ListItem>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} button component='a' href='/KeeperPage'>
           <KeeperCard />
         </ListItem>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} button component='a' href='/KeeperPage'>
           <KeeperCard />
         </ListItem>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} button component='a' href='/KeeperPage'>
           <KeeperCard />
         </ListItem>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} button component='a' href='/KeeperPage'>
           <KeeperCard />
         </ListItem>
       </List>
