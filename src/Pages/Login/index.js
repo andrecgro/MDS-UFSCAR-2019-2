@@ -9,10 +9,11 @@ import FirebaseService from '../../Services/Firebase'
 
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
+import { isAuthenticated } from '../../utils/selectors'
 
-function Login ({ history, enqueueSnackbar, userAuth }) {
+function Login ({ history, enqueueSnackbar, isAuthenticated }) {
   useEffect(() => {
-    if (userAuth) {
+    if (isAuthenticated) {
       history.push('/home')
     }
   })
@@ -52,8 +53,10 @@ function Login ({ history, enqueueSnackbar, userAuth }) {
   )
 }
 
-const mapStateToProps = state => {
-  return { userAuth: state.userAuth }
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: isAuthenticated(state)
+  }
 }
 
 export default compose(

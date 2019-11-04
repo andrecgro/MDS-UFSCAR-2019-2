@@ -5,8 +5,12 @@ import {
   Typography,
   Container,
   Grid,
-  Avatar
+  Avatar,
+  List,
+  ListItem,
+  ListItemText
 } from '@material-ui/core'
+import FirebaseService from '../../Services/Firebase'
 
 function Me ({ userAuth, history }) {
   const defaultPhoto = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTK1J-i3ZrWnicHdauDJ1ZUN9laTSlb1xG0bhlf9a484BGIL2JL'
@@ -27,6 +31,11 @@ function Me ({ userAuth, history }) {
           <Typography variant='body1'>
             {email}
           </Typography>
+          <List>
+            <ListItem>
+              <ListItemText primary='Sair' button onClick={() => FirebaseService.logout()} />
+            </ListItem>
+          </List>
           <Typography variant='body2' align='center' color='secondary'>
             Versão 1.0.0
           </Typography>

@@ -16,7 +16,7 @@ function Root ({ login, logout }) {
   useEffect(() => {
     FirebaseService.onAuthChange(
       (authUser) => login(authUser),
-      () => logout()
+      () => { logout() }
     )
   })
   return (
