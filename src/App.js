@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Header, Footer } from './Components/Layouts/'
+import Orders from './Components/Orders'
 import KeepersList from './Components/Keepers'
 import Me from './Pages/Me'
 import { makeStyles } from '@material-ui/styles'
@@ -37,6 +38,7 @@ function App (props) {
       <Paper className={classes.content}>
         {(page === 'home') && <KeepersList />}
         {(page === 'me') && <Me />}
+        {(page === 'orders') && <Orders />}
       </Paper>
       <div className={classes.menu}>
         <Footer callBack={setPage} />

@@ -15,7 +15,7 @@ export default function BottomNavBar ({ callBack }) {
       showLabels
     >
       <BottomNavigationAction label='Home' icon={<Home />} value='home' />
-      <BottomNavigationAction label='Pedidos' icon={<History />} value='pedidos' />
+      <BottomNavigationAction label='Pedidos' icon={<History />} value='orders' />
       <BottomNavigationAction label='Minha Conta' icon={<Person />} value='me' />
     </BottomNavigation>
   )
