@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, TextField, Box, Container, Grid, Link } from '@material-ui/core'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -7,7 +7,17 @@ import { withSnackbar } from 'notistack'
 
 import FirebaseService from '../../Services/Firebase'
 
-function Login ({ history, enqueueSnackbar }) {
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
+import { isAuthenticated } from '../../utils/selectors'
+
+function Login ({ history, enqueueSnackbar, isAuthenticated }) {
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push('/home')
+    }
+  })
+
   const classes = useStyles()
 
   const [email, setEmail] = useState(null)
@@ -43,7 +53,16 @@ function Login ({ history, enqueueSnackbar }) {
   )
 }
 
-export default withSnackbar(Login)
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: isAuthenticated(state)
+  }
+}
+
+export default compose(
+  withSnackbar,
+  connect(mapStateToProps, null)
+)(Login)
 
 const useStyles = makeStyles(theme => ({
   submit: {

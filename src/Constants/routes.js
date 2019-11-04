@@ -1,5 +1,7 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 import App from '../App'
 import Register from '../Pages/Register'
 import Main from '../Pages/Main'
@@ -7,17 +9,33 @@ import Orders from '../Components/Orders'
 import HistoryOrders from '../Components/Orders/HistoricoPedidos'
 import FutureOrders from '../Components/Orders/PedidosAgendados'
 import KeeperPage from '../Components/Keepers/KeeperPage'
+import { isAuthenticated } from '../utils/selectors'
 
-export default function Routes () {
+function Routes ({ isAuthenticated }) {
+  const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={props =>
+        isAuthenticated ? (<Component {...props} />) : (<Redirect to={{ pathname: '/', state: { from: props.location } }} />)}
+    />
+  )
   return (
     <BrowserRouter>
       <Route path='/' exact component={Main} />
       <Route path='/register' exact component={Register} />
-      <Route path='/home' exact component={App} />
-      <Route path='/orders' exact component={Orders} />
-      <Route path='/scheduled' exact component={FutureOrders} />
-      <Route path='/history' exact component={HistoryOrders} />
-      <Route path='/keeper' exact component={KeeperPage} />
+      <PrivateRoute path='/home' exact component={App} />
+      <PrivateRoute path='/orders' exact component={Orders} />
+      <PrivateRoute path='/scheduled' exact component={FutureOrders} />
+      <PrivateRoute path='/history' exact component={HistoryOrders} />
+      <PrivateRoute path='/keeper' exact component={KeeperPage} />
     </BrowserRouter>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: isAuthenticated(state)
+  }
+}
+
+export default connect(mapStateToProps, null)(Routes)

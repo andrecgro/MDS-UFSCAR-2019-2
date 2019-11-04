@@ -27,11 +27,29 @@ export default class FirebaseService {
   }
 
   static createUserWithEmailAndPassword = (email, password, datas) => {
+    const data = { displayName: datas.name }
     return FirebaseAuth.createUserWithEmailAndPassword(email, password)
-      .then(authUser => FirebaseDatabase.ref('users/' + authUser.user.uid).set(datas))
+      .then(authUser => {
+        authUser.user.updateProfile(data)
+        return FirebaseDatabase.ref('users/' + authUser.user.uid).set(datas)
+      })
   }
 
   static signInWithEmailAndPassword = (email, password) => {
     return FirebaseAuth.signInWithEmailAndPassword(email, password)
+  }
+
+  static onAuthChange = (callbackLogin, callbackLogout) => {
+    FirebaseAuth.onAuthStateChanged(authUser => {
+      if (!authUser) {
+        callbackLogout(authUser)
+      } else {
+        callbackLogin(authUser)
+      }
+    })
+  }
+
+  static logout = () => {
+    return FirebaseAuth.signOut()
   }
 }
