@@ -31,13 +31,6 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired
 }
 
-function a11yProps (index) {
-  return {
-    id: `nav-tab-${index}`,
-    'aria-controls': `nav-tabpanel-${index}`
-  }
-}
-
 function LinkTab (props) {
   return (
     <Tab
@@ -67,8 +60,8 @@ export default function SchedulesList () {
           onChange={handleChange}
           aria-label='nav tabs example'
         >
-          <LinkTab label='Agendados' href='/scheduled' {...a11yProps(0)} />
-          <LinkTab label='Histórico' href='/history' {...a11yProps(1)} />
+          <LinkTab label='Agendados' />
+          <LinkTab label='Histórico' />
         </Tabs>
       </AppBar>
 
