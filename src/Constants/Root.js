@@ -12,6 +12,9 @@ import Routes from './routes'
 import FirebaseService from '../Services/Firebase'
 import { login, logout } from '../action/actionCreator'
 
+import DateFnsUtils from '@date-io/date-fns'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+
 function Root ({ login, logout }) {
   useEffect(() => {
     FirebaseService.onAuthChange(
@@ -20,13 +23,16 @@ function Root ({ login, logout }) {
     )
   })
   return (
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
 
-    <SnackbarProvider maxSnack={5} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Routes />
-      </ThemeProvider>
-    </SnackbarProvider>
+      <SnackbarProvider maxSnack={5} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Routes />
+        </ThemeProvider>
+      </SnackbarProvider>
+
+    </MuiPickersUtilsProvider>
   )
 }
 

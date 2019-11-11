@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 
   },
   local: {
-    fontSize: '0.5rem'
+    fontSize: '0.75rem!important'
   }
 }))
 
@@ -32,7 +32,7 @@ export default function TopBar () {
   const classes = useStyles()
 
   return (
-    <AppBar position='static'>
+    <AppBar position='fixed'>
       <Toolbar>
         <Typography variant='h5' className={classes.title}>
           weKeeper
@@ -42,7 +42,7 @@ export default function TopBar () {
           <ListItemIcon>
             <MyLocation />
           </ListItemIcon>
-          <ListItemText className={classes.local} primary='São Carlos - SP' />
+          <ListItemText className={classes.local} secondary='São Carlos - SP' />
           {open ? <ExpandMore /> : <ExpandLess />}
         </Button>
       </Toolbar>

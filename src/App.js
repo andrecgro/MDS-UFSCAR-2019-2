@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Header, Footer } from './Components/Layouts/'
+import { Footer } from './Components/Layouts/'
 import Orders from './Components/Orders'
 import KeepersList from './Components/Keepers'
 import Me from './Pages/Me'
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
   content: {
     width: '100%',
-    height: 'calc(100% - 120px)',
+    height: 'calc(100% - 42px)',
     overflow: 'auto'
   },
 
@@ -34,7 +34,6 @@ function App (props) {
 
   return (
     <div className={classes.App}>
-      <Header />
       <Paper className={classes.content}>
         {(page === 'home') && <KeepersList />}
         {(page === 'me') && <Me />}

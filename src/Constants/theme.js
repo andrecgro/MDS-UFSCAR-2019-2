@@ -27,6 +27,17 @@ export const theme = createMuiTheme({
           color: '#fff'
         }
       }
+    },
+    MuiListItemIcon: {
+      root: {
+        minWidth: '30px'
+      }
+    },
+    MuiListItem: {
+      root: {
+        paddingTop: '1px',
+        paddingBottom: '2px'
+      }
     }
   }
 })

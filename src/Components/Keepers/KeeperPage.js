@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, AppBar, Tabs, Tab, Box, Grid, Avatar } from '@material-ui/core'
+import { Typography, AppBar, Tabs, Tab, Box, Grid, Avatar, Toolbar, IconButton } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import Calendario from './KeeperPage/Calendario'
@@ -7,6 +7,7 @@ import Referencias from './KeeperPage/References'
 import Geral from './KeeperPage/General'
 import Rating from '@material-ui/lab/Rating'
 import StarBorderIcon from '@material-ui/icons/StarBorder'
+import { ArrowBack } from '@material-ui/icons'
 
 const useStyles = makeStyles(theme => ({
 
@@ -59,7 +60,7 @@ function LinkTab (props) {
   )
 }
 
-export default function KeeperPage () {
+export default function KeeperPage ({ history }) {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
@@ -70,6 +71,11 @@ export default function KeeperPage () {
   return (
     <div className={classes.root}>
       <AppBar position='static' padding='25px'>
+        <Toolbar>
+          <IconButton edge='start' color='inherit' onClick={() => history.goBack()}>
+            <ArrowBack />
+          </IconButton>
+        </Toolbar>
         <Grid container direction='column' alignItems='center' justify='center' className='avatarContainer'>
           <Avatar
             alt='Arlete Ribeiro'
@@ -101,7 +107,7 @@ export default function KeeperPage () {
         >
           <LinkTab label='Geral' href='/general' {...a11yProps(0)} />
           <LinkTab label='Agenda' href='/calendar' {...a11yProps(1)} />
-          <LinkTab label='Referências' href='/references' {...a11yProps(0)} />
+          <LinkTab label='Referências' href='/references' {...a11yProps(2)} />
         </Tabs>
       </AppBar>
 
@@ -111,7 +117,7 @@ export default function KeeperPage () {
       <TabPanel value={value} index={1}>
         <Calendario />
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={value} index={2}>
         <Referencias />
       </TabPanel>
     </div>
