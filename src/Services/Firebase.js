@@ -1,4 +1,5 @@
-import { FirebaseDatabase, FirebaseAuth } from '../config/Firebase'
+import { FirebaseDatabase, FirebaseAuth, FirebaseStorage } from '../config/Firebase'
+import uuidv4 from 'uuid/v4'
 
 export default class FirebaseService {
   static getDataList = (nodePath, callback, size = 10) => {
@@ -35,6 +36,10 @@ export default class FirebaseService {
       })
   }
 
+  static updateProfile = (data) => {
+    return FirebaseAuth.currentUser.updateProfile(data)
+  }
+
   static signInWithEmailAndPassword = (email, password) => {
     return FirebaseAuth.signInWithEmailAndPassword(email, password)
   }
@@ -51,5 +56,11 @@ export default class FirebaseService {
 
   static logout = () => {
     return FirebaseAuth.signOut()
+  }
+
+  static uploadImage = (image) => {
+    const ref = FirebaseStorage.ref()
+    const id = uuidv4()
+    return ref.child(id).put(image)
   }
 }
