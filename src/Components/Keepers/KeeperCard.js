@@ -19,9 +19,9 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function KeeperCard () {
+export default function KeeperCard({name, score, price, services}) {
   const classes = useStyles()
-
+  const services1 = services.splice(0,services.length/2)
   return (
 
     <Grid container direction='row'>
@@ -34,37 +34,41 @@ export default function KeeperCard () {
       </Grid>
       <Grid item xs={9} direction='column'>
         <Typography variant='h5' component='h2'>
-          Arlete Ribeiro
+          {name}
         </Typography>
-        <Grid container item direction='row'>
+        <Grid container item direction='row' justify='space-between'>
           <Grid item className={classes.features}>
-            <Typography variant='caption' component='h2'>
-              Lavagem de Roupas
-            </Typography>
-            <Typography variant='caption' component='h5' className={classes.services}>
-              Limpeza pesada
-            </Typography>
+            { services.map( item =>
+                (
+                  <Typography variant='p' component='p'>
+                    {item}
+                  </Typography>
+                )
+              )
+            }
           </Grid>
-          <Grid item>
-            <Typography variant='caption' component='h5' className={classes.services}>
-              Preparação de refeições
-            </Typography>
-            <Typography variant='caption' component='h5' className={classes.services}>
-              Limpeza de janelas
-            </Typography>
+          <Grid item className={classes.features}>
+            { services1.map( item =>
+                (
+                  <Typography variant='p' component='p'>
+                    {item}
+                  </Typography>
+                )
+              )
+            }
           </Grid>
         </Grid>
       </Grid>
       <Grid container item direction='row' justify='space-between'>
         <Rating
           name='customized-empty'
-          value={4.5}
+          value={score}
           precision={0.5}
           emptyIcon={<StarBorderIcon fontSize='inherit' />}
           readOnly
         />
         <Typography variant='h6' component='h5'>
-          R$ 120,00/diária
+          R$ {price}/diária
         </Typography>
       </Grid>
     </Grid>

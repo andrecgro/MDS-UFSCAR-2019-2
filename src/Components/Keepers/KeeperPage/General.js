@@ -13,17 +13,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: '1rem',
     marginTop: '10px'
   },
-  root2: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper
-  },
-  gridList: {
-    flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: 'translateZ(0)'
+  root:{
+    paddingTop: '0px'
   }
 }))
 
@@ -39,40 +30,8 @@ export default function General () {
   const classes = useStyles()
   const [dense] = React.useState(false)
 
-  const tileData = [
-    {
-      img: 'http://br.web.img3.acsta.net/r_640_360/newsv7/19/02/14/16/55/5040184.jpg',
-      title: 'John Doe',
-      author: 'John Doe Author'
-    },
-    {
-      img: 'http://br.web.img2.acsta.net/r_640_480/newsv7/19/02/14/17/48/2006236.png',
-      title: 'John Doe',
-      author: 'John Doe Author'
-    },
-    {
-      img: 'http://br.web.img3.acsta.net/r_640_360/newsv7/19/02/14/16/55/5040184.jpg',
-      title: 'John Doe',
-      author: 'John Doe Author'
-    },
-    {
-      img: 'http://br.web.img2.acsta.net/r_640_480/newsv7/19/02/14/17/48/2006236.png',
-      title: 'John Doe',
-      author: 'John Doe Author'
-    }, {
-      img: 'http://br.web.img3.acsta.net/r_640_360/newsv7/19/02/14/16/55/5040184.jpg',
-      title: 'John Doe',
-      author: 'John Doe Author'
-    },
-    {
-      img: 'http://br.web.img2.acsta.net/r_640_480/newsv7/19/02/14/17/48/2006236.png',
-      title: 'John Doe',
-      author: 'John Doe Author'
-    }
-  ]
-
   return (
-    <div>
+    <div className={classes.root}>
       <Paper className={classes.description}>
         <Typography variant='h5' component='h3'>
           Descrição
@@ -106,26 +65,6 @@ export default function General () {
           </List>
         </Grid>
       </Grid>
-
-      <div className={classes.root2}>
-        <GridList cols={3.5}>
-          {tileData.map(tile => (
-            <GridListTile key={tile.img}>
-              <img src={tile.img} alt={tile.title} />
-              <GridListTileBar
-                title={tile.title}
-                classes={{
-                  root: classes.titleBar,
-                  title: classes.title
-                }}
-                actionIcon={
-                  <IconButton aria-label={`star ${tile.title}`} />
-                }
-              />
-            </GridListTile>
-          ))}
-        </GridList>
-      </div>
 
       <Button variant='contained' color='primary' aria-label='add' className={classes.button} fullWidth>
         Contratar

@@ -8,6 +8,7 @@ import Geral from './KeeperPage/General'
 import Rating from '@material-ui/lab/Rating'
 import StarBorderIcon from '@material-ui/icons/StarBorder'
 import { ArrowBack } from '@material-ui/icons'
+import FirebaseService from '../../Services/Firebase'
 
 const useStyles = makeStyles(theme => ({
 
@@ -15,6 +16,9 @@ const useStyles = makeStyles(theme => ({
     width: 150,
     height: 150,
     margin: 0
+  },
+  rating_price: {
+    padding: '0px 10px'
   }
 }))
 
@@ -61,6 +65,7 @@ function LinkTab (props) {
 }
 
 export default function KeeperPage ({ history }) {
+  let diaristas = []
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
@@ -86,7 +91,7 @@ export default function KeeperPage ({ history }) {
             Arlete Ribeiro
           </Typography>
         </Grid>
-        <Grid container item direction='row' justify='space-between'>
+        <Grid container item direction='row' justify='space-between' className={classes.rating_price}>
           <Rating
             name='customized-empty'
             value={4.5}
