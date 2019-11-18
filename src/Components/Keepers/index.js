@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import KeeperCard from './KeeperCard'
 import ServicesCard from './ServicesCard'
 import HeaderKeeper from './HeaderKeeper'
@@ -21,9 +21,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function KeepersList ({ history }) {
-
-  const[diaristas, setDiaristas] = useState([])
-  useEffect( ()=>{
+  const [diaristas, setDiaristas] = useState([])
+  useEffect(() => {
     FirebaseService.getDataList('diaristas', (item) => {
       console.log('item fire:' + item)
       setDiaristas(item)
@@ -40,14 +39,14 @@ function KeepersList ({ history }) {
         Profissionais
         </Typography>
         <List>
-          { diaristas.map(item => {
+          {diaristas.map(item => {
             const score = parseFloat(item.sum_score) / item.count_score
-            return(
-              <ListItem className={classes.listItem} button component='a' onClick={() => history.push('/keeper')}>
-                  <KeeperCard name={item.name} price={item.price} services={item.services} score={score} />
+            return (
+              <ListItem className={classes.listItem} button component='a' onClick={() => history.push('/keeper')} key={item.id}>
+                <KeeperCard name={item.name} price={item.price} services={item.services} score={score} />
               </ListItem>
             )
-          }) }
+          })}
         </List>
       </Container>
     </div>

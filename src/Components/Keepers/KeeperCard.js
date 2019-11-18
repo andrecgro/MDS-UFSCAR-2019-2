@@ -19,9 +19,9 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function KeeperCard({name, score, price, services}) {
+export default function KeeperCard ({ name, score, price, services }) {
   const classes = useStyles()
-  const services1 = services.splice(0,services.length/2)
+  const services1 = services.splice(0, services.length / 2)
   return (
 
     <Grid container direction='row'>
@@ -38,24 +38,22 @@ export default function KeeperCard({name, score, price, services}) {
         </Typography>
         <Grid container item direction='row' justify='space-between'>
           <Grid item className={classes.features}>
-            { services.map( item =>
-                (
-                  <Typography variant='p' component='p'>
-                    {item}
-                  </Typography>
-                )
+            {services.map(item =>
+              (
+                <Typography variant='p' component='p' key={services.id}>
+                  {item}
+                </Typography>
               )
-            }
+            )}
           </Grid>
           <Grid item className={classes.features}>
-            { services1.map( item =>
-                (
-                  <Typography variant='p' component='p'>
-                    {item}
-                  </Typography>
-                )
+            {services1.map(item =>
+              (
+                <Typography variant='p' component='p' key={services.id}>
+                  {item}
+                </Typography>
               )
-            }
+            )}
           </Grid>
         </Grid>
       </Grid>

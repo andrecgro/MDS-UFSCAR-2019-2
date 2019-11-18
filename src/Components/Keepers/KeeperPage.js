@@ -8,7 +8,6 @@ import Geral from './KeeperPage/General'
 import Rating from '@material-ui/lab/Rating'
 import StarBorderIcon from '@material-ui/icons/StarBorder'
 import { ArrowBack } from '@material-ui/icons'
-import FirebaseService from '../../Services/Firebase'
 
 const useStyles = makeStyles(theme => ({
 
@@ -65,7 +64,6 @@ function LinkTab (props) {
 }
 
 export default function KeeperPage ({ history }) {
-  let diaristas = []
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
